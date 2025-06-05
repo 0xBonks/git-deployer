@@ -13,4 +13,6 @@
 prompt.txt
 package-lock.json
 .vscode
+__pycache__
+ca-bundle.crt
 getApiAccess.py

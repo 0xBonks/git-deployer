@@ -2,13 +2,13 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Git Deployer - Automatic Deployment Guides",
-  description:
-    "Automatically generate deployment guides and configuration files for your Git repositories on Docker, AWS, Azure and OpenShift",
+  title: "Git Deployment Generator",
+  description: "Generate deployment instructions for your Git repositories across multiple platforms",
     generator: 'v0.dev'
 }
 
@@ -18,8 +18,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
